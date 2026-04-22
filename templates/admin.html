@@ -1,0 +1,111 @@
+<!-- templates/admin.html -->
+{% extends "base.html" %}
+{% block title %}Admin - SmartCredit{% endblock %}
+{% block content %}
+<div class="dashboard-container">
+    <h1>Admin Dashboard</h1>
+    
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>{{ stats.total }}</h3>
+            <p>Total Applications</p>
+        </div>
+        <div class="stat-card" style="border-left-color: #28a745;">
+            <h3>{{ stats.approved }}</h3>
+            <p>Approved</p>
+        </div>
+        <div class="stat-card" style="border-left-color: #dc3545;">
+            <h3>{{ stats.rejected }}</h3>
+            <p>Rejected</p>
+        </div>
+        <div class="stat-card" style="border-left-color: #ffc107;">
+            <h3>{{ stats.pending }}</h3>
+            <p>Pending</p>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h3>Credit Card Applications</h3>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Applicant</th>
+                        <th>Income</th>
+                        <th>Age</th>
+                        <th>ML Prediction</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for app in applications %}
+                    <tr>
+                        <td>{{ app.id }}</td>
+                        <td>
+                            <strong>{{ app.name }}</strong><br>
+                            <small>{{ app.email }}</small>
+                        </td>
+                        <td>Rs{{ '{:,.0f}'.format(app.total_income) }}</td>
+                        <td>{{ app.age }}</td>
+                        <td>
+                            <span class="badge badge-{{ app.prediction.lower() }}">
+                                {{ app.prediction }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge badge-{{ app.status }}">
+                                {{ app.status.upper() }}
+                            </span>
+                        </td>
+                        <td>{{ app.applied_date[:10] }}</td>
+                        <td>
+                            {% if app.status == 'pending' %}
+                                <a href="{{ url_for('update_status', app_id=app.id, status='approved') }}" 
+                                   style="display: inline-block; padding: 5px 10px; margin: 2px; background: #28a745; color: white; text-decoration: none; border-radius: 4px; font-size: 0.85rem;">
+                                    ✓ Approve
+                                </a>
+                                <a href="{{ url_for('update_status', app_id=app.id, status='rejected') }}" 
+                                   style="display: inline-block; padding: 5px 10px; margin: 2px; background: #dc3545; color: white; text-decoration: none; border-radius: 4px; font-size: 0.85rem;">
+                                    ✗ Reject
+                                </a>
+                            {% else %}
+                                <span style="color: #7f8c8d; font-size: 0.85rem;">{{ app.status.upper() }}</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <h3>Registered Users</h3>
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Registered</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.created_at[:10] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

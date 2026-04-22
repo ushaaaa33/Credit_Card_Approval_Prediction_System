@@ -1,0 +1,55 @@
+<!-- templates/dashboard.html -->
+{% extends "base.html" %}
+{% block title %}Dashboard - SmartCredit{% endblock %}
+{% block content %}
+<div class="dashboard-container">
+    <h1>Welcome, {{ user.name }}!</h1>
+    
+    <div class="dashboard-card">
+        <h3>👤 Profile Information</h3>
+        <p><strong>Name:</strong> {{ user.name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Member Since:</strong> {{ user.created_at[:10] }}</p>
+    </div>
+
+    <div class="dashboard-card">
+        <h3>💳 My Applications</h3>
+        {% if applications %}
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Income</th>
+                            <th>Age</th>
+                            <th>ML Prediction</th>
+                            <th>Admin Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for app in applications %}
+                        <tr>
+                            <td>{{ app.applied_date[:10] }}</td>
+                            <td>Rs{{ '{:,.2f}'.format(app.total_income) }}</td>
+                            <td>{{ app.age }}</td>
+                            <td>
+                                <span class="badge badge-{{ app.prediction.lower() }}">
+                                    {{ app.prediction }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge badge-{{ app.status }}">
+                                    {{ app.status.upper() }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>No applications yet. <a href="{{ url_for('apply') }}" style="color: #667eea; font-weight: 600;">Apply now!</a></p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

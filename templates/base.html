@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SmartCredit Banking System{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>🏦 SmartCredit</h2>
+            </div>
+            <div class="nav-menu">
+                {% if session.user_id %}
+                    {% if session.user_role == 'admin' %}
+                        <a href="{{ url_for('admin') }}">Admin Dashboard</a>
+                    {% else %}
+                        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                        <a href="{{ url_for('apply') }}">Apply</a>
+                    {% endif %}
+                    <a href="{{ url_for('logout') }}">Logout ({{ session.user_name }})</a>
+            
+                    {% else %}
+                        <a href="{{ url_for('home') }}">Home</a>
+                        <a href="{{ url_for('about') }}">About Us</a>
+                        <a href="{{ url_for('contact') }}">Contact Us</a>
+                        <a href="{{ url_for('register') }}">Register</a>
+                        <a href="{{ url_for('login') }}">Login</a>
+
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}
+    <div class="hero-section">
+        <div class="container">
+            <h1>Welcome to SmartCredit</h1>
+            <p class="subtitle">Effortless Credit Decisions for a Faster Future</p>
+            <p class="description">
+                Getting a credit card shouldn't be a mystery. SmartCredit provides a clear, fast, and fair way to check your eligibility. 
+                Apply online, track your status, and get your decision in seconds.
+            </p>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🤖 Custom ML Algorithm</h3>
+                    <p>Built-from-scratch Decision Tree classifier</p>
+                </div>
+                <div class="feature-card">
+                    <h3>⚡ Instant Decisions</h3>
+                    <p>Get immediate credit approval predictions</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔒 Secure & Reliable</h3>
+                    <p>Encrypted password protection</p>
+                </div>
+            </div>
+            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 40px;">
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Get Started</a>
+                <a href="{{ url_for('login') }}" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <footer class="footer">
+    <p>&copy; 2025 SmartCredit | AI-Powered Banking Solutions</p>
+</footer>
+</body>
+</html>

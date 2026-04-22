@@ -1,0 +1,162 @@
+<!-- templates/apply.html -->
+{% extends "base.html" %}
+{% block title %}Apply - SmartCredit{% endblock %}
+{% block content %}
+<div class="form-container">
+    <div class="form-card" style="max-width: 700px;">
+        <h2>Credit Card Application</h2>
+        <p style="text-align: center; color: #7f8c8d; margin-bottom: 30px;">
+            Fill in your details for ML-based credit evaluation
+        </p>
+        
+        <form method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select</option>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required min="18" max="100">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="own_car">Own Car?</label>
+                    <select id="own_car" name="own_car" required>
+                        <option value="">Select</option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="own_realty">Own Realty?</label>
+                    <select id="own_realty" name="own_realty" required>
+                        <option value="">Select</option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="children">Children</label>
+                    <input type="number" id="children" name="children" required min="0" max="20">
+                </div>
+                <div class="form-group">
+                    <label for="fam_members">Family Members</label>
+                    <input type="number" id="fam_members" name="fam_members" required min="1" max="20">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="total_income">Annual Income (Rs)</label>
+                <input type="number" id="total_income" name="total_income" required min="0" step="100000">
+            </div>
+
+            <div class="form-group">
+                <label for="income_type">Income Type</label>
+                <select id="income_type" name="income_type" required>
+                    <option value="">Select</option>
+                    <option value="Working">Working</option>
+                    <option value="Commercial associate">Commercial Associate</option>
+                    <option value="Pensioner">Pensioner</option>
+                    <option value="State servant">State Servant</option>
+                    <option value="Student">Student</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="education_type">Education Type</label>
+                <select id="education_type" name="education_type" required>
+                    <option value="">Select</option>
+                    <option value="Higher education">Higher Education</option>
+                    <option value="Secondary / secondary special">Secondary</option>
+                    <option value="Incomplete higher">Incomplete Higher</option>
+                    <option value="Lower secondary">Lower Secondary</option>
+                    <option value="Academic degree">Academic Degree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="family_status">Family Status</label>
+                <select id="family_status" name="family_status" required>
+                    <option value="">Select</option>
+                    <option value="Married">Married</option>
+                    <option value="Single / not married">Single</option>
+                    <option value="Civil marriage">Civil Marriage</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Widow">Widow</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="housing_type">Housing Type</label>
+                <select id="housing_type" name="housing_type" required>
+                    <option value="">Select</option>
+                    <option value="House / apartment">House/Apartment</option>
+                    <option value="With parents">With Parents</option>
+                    <option value="Rented apartment">Rented</option>
+                    <option value="Municipal apartment">Municipal</option>
+                    <option value="Office apartment">Office</option>
+                    <option value="Co-op apartment">Co-op</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <input type="number" id="experience" name="experience" required min="0" max="50" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label for="work_phone">Work Phone?</label>
+                    <select id="work_phone" name="work_phone" required>
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="occupation_type">Occupation</label>
+                <select id="occupation_type" name="occupation_type" required>
+                    <option value="">Select</option>
+                    <option value="Laborers">Laborers</option>
+                    <option value="Core staff">Core Staff</option>
+                    <option value="Accountants">Accountants</option>
+                    <option value="Managers">Managers</option>
+                    <option value="Drivers">Drivers</option>
+                    <option value="Sales staff">Sales Staff</option>
+                    <option value="Cleaning staff">Cleaning Staff</option>
+                    <option value="Cooking staff">Cooking Staff</option>
+                    <option value="Private service staff">Private Service</option>
+                    <option value="Medicine staff">Medicine Staff</option>
+                    <option value="Security staff">Security Staff</option>
+                    <option value="High skill tech staff">High Skill Tech</option>
+                    <option value="Waiters/barmen staff">Waiters/Barmen</option>
+                    <option value="Low-skill Laborers">Low-skill Laborers</option>
+                    <option value="Realty agents">Realty Agents</option>
+                    <option value="Secretaries">Secretaries</option>
+                    <option value="IT staff">IT Staff</option>
+                    <option value="HR staff">HR Staff</option>
+                    <option value="Occupation Not Identified">Not Identified</option>
+                </select>
+            </div>
+
+            <div style="background-color: #e8f4f8; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 4px solid #667eea;">
+                <p><strong>ℹ️ ML Model Information:</strong></p>
+                <p>Your application will be evaluated using a predictive decision-support system.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

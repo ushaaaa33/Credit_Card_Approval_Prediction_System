@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us | SmartCredit{% endblock %}
+
+{% block content %}
+<div class="contact-page">
+    <h1>Contact Us</h1>
+
+    <p class="contact-intro">
+        If you have any questions regarding credit card applications, system usage,
+        or technical issues, please feel free to contact us.
+    </p>
+
+    <div class="contact-container">
+
+        <!-- Left: Contact Information -->
+        <div class="contact-info">
+            <h3>Banking Support</h3>
+            <p><strong>Email:</strong> support@smartcredit.com</p>
+            <p><strong>Phone:</strong> +977-0123456789</p>
+            <p><strong>Office Hours:</strong> Sunday – Friday, 10:00 AM – 5:00 PM</p>
+            <p><strong>Location:</strong> Kathmandu, Nepal</p>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="contact-form">
+            <h3>Send Us a Message</h3>
+
+            <form>
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email address" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+
+                <button type="submit" class="btn-submit">
+                    Submit Message
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

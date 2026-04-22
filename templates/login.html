@@ -1,0 +1,95 @@
+<!-- templates/login.html -->
+<!-- UPDATED VERSION: User login with link to Admin login -->
+{% extends "base.html" %}
+{% block title %}Login - SmartCredit{% endblock %}
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <!-- User Badge -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                        color: white; 
+                        padding: 10px 20px; 
+                        border-radius: 25px; 
+                        display: inline-block;
+                        font-weight: 600;
+                        box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);">
+                👤 USER LOGIN
+            </div>
+        </div>
+        
+        <h2 style="text-align: center;">User Login</h2>
+        <p style="text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 0.9em;">
+            Login to apply for credit card
+        </p>
+        
+        <form method="POST" autocomplete="off">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" 
+                       id="email" 
+                       name="email" 
+                       placeholder="Enter your email"
+                       autocomplete="nope" 
+                       readonly 
+                       onfocus="this.removeAttribute('readonly');" 
+                       required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" 
+                       id="password" 
+                       name="password" 
+                       placeholder="Enter your password"
+                       autocomplete="new-password" 
+                       readonly 
+                       onfocus="this.removeAttribute('readonly');" 
+                       required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        
+        <!-- Register Link -->
+        <p style="text-align: center; margin-top: 20px;">
+            Don't have an account? 
+            <a href="{{ url_for('register') }}" 
+               style="color: #667eea; font-weight: 600;">
+                Register here
+            </a>
+        </p>
+        
+        <!-- Separator -->
+        <div style="text-align: center; margin: 25px 0;">
+            <span style="color: #bdc3c7; font-size: 0.9em;">──────── OR ────────</span>
+        </div>
+        
+        <!-- Admin Login Link -->
+        <div style="text-align: center;">
+            <a href="{{ url_for('admin_login') }}" 
+               style="display: inline-block;
+                      color: #dc3545; 
+                      font-weight: 600;
+                      text-decoration: none;
+                      padding: 10px 25px;
+                      border: 2px solid #dc3545;
+                      border-radius: 5px;
+                      transition: all 0.3s;
+                      background: white;">
+                🔐 Admin Login
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Hover effect for admin login button */
+a[href="{{ url_for('admin_login') }}"]:hover {
+    background: #dc3545;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+</style>
+{% endblock %}

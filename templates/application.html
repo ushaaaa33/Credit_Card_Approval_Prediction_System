@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Edit Application</h2>
+
+<form method="POST">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Gender:</label>
+                <select name="gender" class="form-control" required>
+                    <option value="M" {% if application.gender == 'M' %}selected{% endif %}>Male</option>
+                    <option value="F" {% if application.gender == 'F' %}selected{% endif %}>Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Own Car:</label>
+                <select name="own_car" class="form-control" required>
+                    <option value="Y" {% if application.own_car == 'Y' %}selected{% endif %}>Yes</option>
+                    <option value="N" {% if application.own_car == 'N' %}selected{% endif %}>No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Own Realty:</label>
+                <select name="own_realty" class="form-control" required>
+                    <option value="Y" {% if application.own_realty == 'Y' %}selected{% endif %}>Yes</option>
+                    <option value="N" {% if application.own_realty == 'N' %}selected{% endif %}>No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Children:</label>
+                <input type="number" name="children" class="form-control" value="{{ application.children }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Total Income:</label>
+                <input type="number" step="0.01" name="total_income" class="form-control" value="{{ application.total_income }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Income Type:</label>
+                <select name="income_type" class="form-control" required>
+                    <option value="Working" {% if application.income_type == 'Working' %}selected{% endif %}>Working</option>
+                    <option value="Commercial associate" {% if application.income_type == 'Commercial associate' %}selected{% endif %}>Commercial associate</option>
+                    <option value="Pensioner" {% if application.income_type == 'Pensioner' %}selected{% endif %}>Pensioner</option>
+                    <option value="State servant" {% if application.income_type == 'State servant' %}selected{% endif %}>State servant</option>
+                    <option value="Student" {% if application.income_type == 'Student' %}selected{% endif %}>Student</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Education Type:</label>
+                <select name="education_type" class="form-control" required>
+                    <option value="Secondary / secondary special" {% if application.education_type == 'Secondary / secondary special' %}selected{% endif %}>Secondary / secondary special</option>
+                    <option value="Higher education" {% if application.education_type == 'Higher education' %}selected{% endif %}>Higher education</option>
+                    <option value="Incomplete higher" {% if application.education_type == 'Incomplete higher' %}selected{% endif %}>Incomplete higher</option>
+                    <option value="Lower secondary" {% if application.education_type == 'Lower secondary' %}selected{% endif %}>Lower secondary</option>
+                    <option value="Academic degree" {% if application.education_type == 'Academic degree' %}selected{% endif %}>Academic degree</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Family Status:</label>
+                <select name="family_status" class="form-control" required>
+                    <option value="Married" {% if application.family_status == 'Married' %}selected{% endif %}>Married</option>
+                    <option value="Single / not married" {% if application.family_status == 'Single / not married' %}selected{% endif %}>Single / not married</option>
+                    <option value="Civil marriage" {% if application.family_status == 'Civil marriage' %}selected{% endif %}>Civil marriage</option>
+                    <option value="Separated" {% if application.family_status == 'Separated' %}selected{% endif %}>Separated</option>
+                    <option value="Widow" {% if application.family_status == 'Widow' %}selected{% endif %}>Widow</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Housing Type:</label>
+                <select name="housing_type" class="form-control" required>
+                    <option value="House / apartment" {% if application.housing_type == 'House / apartment' %}selected{% endif %}>House / apartment</option>
+                    <option value="With parents" {% if application.housing_type == 'With parents' %}selected{% endif %}>With parents</option>
+                    <option value="Municipal apartment" {% if application.housing_type == 'Municipal apartment' %}selected{% endif %}>Municipal apartment</option>
+                    <option value="Rented apartment" {% if application.housing_type == 'Rented apartment' %}selected{% endif %}>Rented apartment</option>
+                    <option value="Office apartment" {% if application.housing_type == 'Office apartment' %}selected{% endif %}>Office apartment</option>
+                    <option value="Co-op apartment" {% if application.housing_type == 'Co-op apartment' %}selected{% endif %}>Co-op apartment</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" name="age" class="form-control" value="{{ application.age }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Years of Experience:</label>
+                <input type="number" step="0.1" name="experience" class="form-control" value="{{ application.experience }}" required>
+            </div>
+
+            <div class="form-group">
+                <label>Work Phone:</label>
+                <select name="work_phone" class="form-control" required>
+                    <option value="No" {% if application.work_phone == 'No' %}selected{% endif %}>No</option>
+                    <option value="Yes" {% if application.work_phone == 'Yes' %}selected{% endif %}>Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Occupation Type:</label>
+                <select name="occupation_type" class="form-control" required>
+                    <option value="Laborers" {% if application.occupation_type == 'Laborers' %}selected{% endif %}>Laborers</option>
+                    <option value="Core staff" {% if application.occupation_type == 'Core staff' %}selected{% endif %}>Core staff</option>
+                    <option value="Accountants" {% if application.occupation_type == 'Accountants' %}selected{% endif %}>Accountants</option>
+                    <option value="Managers" {% if application.occupation_type == 'Managers' %}selected{% endif %}>Managers</option>
+                    <option value="Drivers" {% if application.occupation_type == 'Drivers' %}selected{% endif %}>Drivers</option>
+                    <option value="Sales staff" {% if application.occupation_type == 'Sales staff' %}selected{% endif %}>Sales staff</option>
+                    <option value="Cleaning staff" {% if application.occupation_type == 'Cleaning staff' %}selected{% endif %}>Cleaning staff</option>
+                    <option value="Cooking staff" {% if application.occupation_type == 'Cooking staff' %}selected{% endif %}>Cooking staff</option>
+                    <option value="Private service staff" {% if application.occupation_type == 'Private service staff' %}selected{% endif %}>Private service staff</option>
+                    <option value="Medicine staff" {% if application.occupation_type == 'Medicine staff' %}selected{% endif %}>Medicine staff</option>
+                    <option value="Security staff" {% if application.occupation_type == 'Security staff' %}selected{% endif %}>Security staff</option>
+                    <option value="High skill tech staff" {% if application.occupation_type == 'High skill tech staff' %}selected{% endif %}>High skill tech staff</option>
+                    <option value="Waiters/barmen staff" {% if application.occupation_type == 'Waiters/barmen staff' %}selected{% endif %}>Waiters/barmen staff</option>
+                    <option value="Low-skill Laborers" {% if application.occupation_type == 'Low-skill Laborers' %}selected{% endif %}>Low-skill Laborers</option>
+                    <option value="Realty agents" {% if application.occupation_type == 'Realty agents' %}selected{% endif %}>Realty agents</option>
+                    <option value="Secretaries" {% if application.occupation_type == 'Secretaries' %}selected{% endif %}>Secretaries</option>
+                    <option value="IT staff" {% if application.occupation_type == 'IT staff' %}selected{% endif %}>IT staff</option>
+                    <option value="HR staff" {% if application.occupation_type == 'HR staff' %}selected{% endif %}>HR staff</option>
+                    <option value="Occupation Not Identified" {% if application.occupation_type == 'Occupation Not Identified' %}selected{% endif %}>Occupation Not Identified</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Family Members:</label>
+                <input type="number" name="fam_members" class="form-control" value="{{ application.fam_members }}" required>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Application</button>
+    <a href="{{ url_for('admin') }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
