@@ -477,7 +477,7 @@ def update_status(app_id, status):
             flash(f'Application {status}! (Email notification failed: {str(e)})', 'warning')
     else:
         flash(f'Application {status} successfully!', 'success')
-    # =================================================
+    
     
     return redirect(url_for('admin'))
 
@@ -485,24 +485,24 @@ def update_status(app_id, status):
 
 if __name__ == '__main__':
     init_db()
-    print("\n" + "=" * 70)
-    print("🏦 SmartCredit Banking System - Starting Server")
-    print("=" * 70)
-    print("\n🔌 Default Admin Credentials:")
-    print("   Email: admin@smartcredit.com")
-    print("   Password: admin123")
-    print("\n🌐 Server: http://127.0.0.1:5000")
+#     print("\n" + "=" * 70)
+#     print("🏦 SmartCredit Banking System - Starting Server")
+#     print("=" * 70)
+#     print("\n🔌 Default Admin Credentials:")
+#     print("   Email: admin@smartcredit.com")
+#     print("   Password: admin123")
+#     print("\n🌐 Server: http://127.0.0.1:5000")
     
-    if EMAIL_ENABLED:
-        print("\n📧 Email Notifications: ✅ ENABLED")
-        print("   ✉️  Application Received - Sent when user submits form")
-        print("   ✉️  Approved - Sent when admin approves")
-        print("   ✉️  Rejected - Sent when admin rejects")
-        print("\n⚙️  Configure email in: email_utils.py (lines 25-26)")
-    else:
-        print("\n📧 Email Notifications: ⚠️  DISABLED")
-        print("   To enable: Place email_utils.py in the same directory")
+#     if EMAIL_ENABLED:
+#         print("\n📧 Email Notifications: ✅ ENABLED")
+#         print("   ✉️  Application Received - Sent when user submits form")
+#         print("   ✉️  Approved - Sent when admin approves")
+#         print("   ✉️  Rejected - Sent when admin rejects")
+#         print("\n⚙️  Configure email in: email_utils.py (lines 25-26)")
+#     else:
+#         print("\n📧 Email Notifications: ⚠️  DISABLED")
+#         print("   To enable: Place email_utils.py in the same directory")
     
-    print("=" * 70 + "\n")
+#     print("=" * 70 + "\n")
     
     app.run(debug=True, port=5000)
